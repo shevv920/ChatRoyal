@@ -1,0 +1,20 @@
+
+tank.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+tank_turret
+  rotate: false
+  xy: 2, 2
+  size: 48, 97
+  orig: 48, 97
+  offset: 0, 0
+  index: -1
+tank_base
+  rotate: false
+  xy: 52, 18
+  size: 64, 81
+  orig: 64, 81
+  offset: 0, 0
+  index: -1

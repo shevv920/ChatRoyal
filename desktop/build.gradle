@@ -1,0 +1,41 @@
+apply plugin: "java"
+apply plugin: "scala"
+
+sourceCompatibility = 8
+sourceSets.main.java.srcDirs = [ "src/java/" ]
+sourceSets.main.scala.srcDirs = [ "src/scala/" ]
+
+project.ext.mainClassName = "io.chatroyal.DesktopLauncher"
+project.ext.assetsDir = new File("../core/assets")
+
+
+task run(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true
+}
+
+
+task debug(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true
+    debug = true
+}
+
+task dist(type: Jar) {
+    from files(sourceSets.main.output.getClassesDirs())
+    from files(sourceSets.main.output.resourcesDir)
+    from {configurations.compile.collect {zipTree(it)}}
+    from files(project.assetsDir)
+ 
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+}
+
+dist.dependsOn classes
