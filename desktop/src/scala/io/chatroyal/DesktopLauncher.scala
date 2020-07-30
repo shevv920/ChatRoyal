@@ -1,18 +1,18 @@
 package io.chatroyal
-import com.badlogic.gdx.backends.lwjgl.{LwjglApplication, LwjglApplicationConfiguration}
+import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 
 object DesktopLauncher extends App {
 
-  val config = new LwjglApplicationConfiguration()
-  config.vSyncEnabled = false
-  config.foregroundFPS = 60
-  config.backgroundFPS = 60
-  config.title = "Chat Royal"
-  config.width = 1024
-  config.height = 768
-  config.useGL30 = false
-  config.forceExit = false
+  val config = new Lwjgl3ApplicationConfiguration()
+  // config.setVSyncEnabled(false)
+  // config.setForegroundFPS(60)
+  // config.setBackgroundFPS(60)
+  // config.setTitle("Chat Royal")
+  // config.setWidth(1024)
+  // config.setHeight(768)
+  // config.setUseGL30(false)
+  // config.setForceExit(false)
   val cr  = new ChatRoyal
-  val app = new LwjglApplication(cr, config)
+  val app = new Lwjgl3Application(cr, config)
 
 }
